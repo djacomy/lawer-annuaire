@@ -1,5 +1,7 @@
 version: '3.1'
 services:
+  redis:
+    image: redis
   api:
     #image: juripredis-crawler_crawler:latest
     container_name: juripredis_annuaire_api
@@ -9,7 +11,25 @@ services:
       dockerfile: docker/annuaire/Dockerfile
     environment:
       DATA_DIR: $DATA_DIR
+      CELERY_RESULT_BACKEND: redis://redis:6379
     ports:
       - "5001:5000"
     volumes:
       - .:/app
+    depends_on:
+      - redis
+    links:
+      - redis
+  worker:
+    container_name: juripredis_annuaire_worker
+    command: python -m manage celery --loglevel=info
+    environment:
+      DATA_DIR: $DATA_DIR
+      CELERY_RESULT_BACKEND: redis://redis:6379
+    build:
+      context: .
+      dockerfile: docker/annuaire/Dockerfile
+    depends_on:
+      - redis
+    links:
+      - redis

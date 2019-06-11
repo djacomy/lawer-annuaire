@@ -1,14 +1,15 @@
 import os
+import subprocess
+import sys
 
-from flask_script import Manager, Shell, Server
+from flask_script import Manager, Shell, Server, Command
 
 from annuaire import create_app
 
 
 server = Server(host="0.0.0.0", threaded=True)
-app = create_app(os.environ.get('ENV', 'dev'))
+app = create_app()
 app.app_context().push()
-
 
 def make_shell_context():
     return dict(app=app)
@@ -16,6 +17,19 @@ def make_shell_context():
 
 manager = Manager(app)
 
+
+class CeleryWorker(Command):
+    """Starts the celery worker."""
+    name = 'celery'
+    capture_all_args = True
+
+    def run(self, argv):
+        ret = subprocess.call(
+            ['celery', 'worker', '-A', 'annuaire.tasks.celery'] + argv)
+        sys.exit(ret)
+
+
+manager.add_command("celery", CeleryWorker())
 manager.add_command("shell", Shell(make_context=make_shell_context))
 manager.add_command("runserver", server)
 

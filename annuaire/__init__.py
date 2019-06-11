@@ -5,7 +5,9 @@ import sys
 from logging.handlers import RotatingFileHandler
 from flask import Flask
 
-from annuaire.annuaire import settings
+from config import settings
+
+from .tasks import celery
 
 
 def register_logging(app):
@@ -26,11 +28,20 @@ def register_logging(app):
     rootLogger.setLevel(logging.DEBUG if os.environ.get('DEBUG', False) else logging.INFO)
 
 
-def create_app(config_name):
+def create_app():
     app = Flask(__name__)
     app.config.from_object(settings)
-
     register_logging(app)
+
+    from .tasks import celery, add
+    celery.conf.update(app.config)
+
+    class ContextTask(celery.Task):
+        def __call__(self, *args, **kwargs):
+            with app.app_context():
+                return self.run(*args, **kwargs)
+
+    celery.Task = ContextTask
 
     from .webapp import webapp_bp
     from .api import api_bp

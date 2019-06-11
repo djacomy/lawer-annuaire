@@ -4,7 +4,8 @@ import os
 from datetime import datetime
 from flask_script import Command, Option
 
-from annuaire.annuaire import get_form_page, search, settings
+from annuaire.annuaire import get_form_page, search
+import config
 from annuaire.annuaire.exception import AnnuaireException
 from annuaire.annuaire.database import populate_lawyers, get_all_barreaux
 
@@ -40,6 +41,6 @@ class ImportCommand(Command):
             except AnnuaireException:
                 statistitics[code] = None
 
-        with open(os.path.join(settings.DATA_DIR,
+        with open(os.path.join(config.DATA_DIR,
                                'stats_{0}.json'.format(datetime.now().strftime('%Y%m%d%H%i%s'))), 'w') as fp:
             json.dump(statistitics, fp)

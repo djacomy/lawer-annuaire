@@ -3,9 +3,10 @@ import requests
 
 from lxml import html
 
-from annuaire.annuaire import settings
 from annuaire.annuaire.exception import AnnuaireException
 from annuaire.annuaire.parser import parse_result, parse_detail
+from config import settings
+
 
 base_url = settings.BASE_URL
 

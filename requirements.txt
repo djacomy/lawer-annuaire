@@ -1,7 +1,9 @@
-flask
-flask-restful
-flask-script
-flask_restful_swagger
-requests
-lxml
-tinydb
+flask==1.0.3
+flask-restful==0.3.7
+flask-script==2.0.6
+flask_restful_swagger==0.20.1
+requests==2.22.0
+lxml==4.3.3
+tinydb==3.13.0
+celery==4.3.0
+redis==3.2.1

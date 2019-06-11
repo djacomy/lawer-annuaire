@@ -2,7 +2,7 @@ import logging
 
 from tinydb import TinyDB, Query
 
-from annuaire.annuaire import settings
+from config import settings
 
 logger = logging.getLogger(__name__)
 
