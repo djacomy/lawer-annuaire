@@ -7,8 +7,6 @@ from flask import Flask
 
 from config import settings
 
-from .tasks import celery
-
 
 def register_logging(app):
     app.logger.name = 'app'
@@ -16,16 +14,17 @@ def register_logging(app):
     # set own root logger
     rootLogger = logging.getLogger(__name__)
     handler = RotatingFileHandler('annuaire.log', maxBytes=10000, backupCount=1)
-    handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
-    handler.setLevel(logging.INFO)
+    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    handler.setFormatter(formatter)
+    handler.setLevel(logging.DEBUG if settings.DEBUG else logging.INFO)
     rootLogger.addHandler(handler)
 
     handler2 = logging.StreamHandler(sys.stdout)
-    handler2.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
-    handler2.setLevel(logging.INFO)
+    handler2.setFormatter(formatter)
+    handler2.setLevel(logging.DEBUG if settings.DEBUG else logging.INFO)
 
     rootLogger.addHandler(handler2)
-    rootLogger.setLevel(logging.DEBUG if os.environ.get('DEBUG', False) else logging.INFO)
+    rootLogger.setLevel(logging.DEBUG if settings.DEBUG else logging.INFO)
 
 
 def create_app():
