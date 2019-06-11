@@ -1,0 +1,15 @@
+version: '3.1'
+services:
+  api:
+    #image: juripredis-crawler_crawler:latest
+    container_name: juripredis_annuaire_api
+    command: python -m manage runserver  -h 0.0.0.0 -p 5000  -d
+    build:
+      context: .
+      dockerfile: docker/annuaire/Dockerfile
+    environment:
+      DATA_DIR: $DATA_DIR
+    ports:
+      - "5001:5000"
+    volumes:
+      - .:/app

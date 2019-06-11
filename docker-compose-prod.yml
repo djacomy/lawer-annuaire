@@ -1,0 +1,14 @@
+version: '3.1'
+services:
+  api:
+    #image: juripredis-crawler_crawler:latest
+    container_name: juripredis_annuaire_api
+    build:
+      context: .
+      dockerfile: docker/annuaire/Dockerfile
+    environment:
+      DATA_DIR: $DATA_DIR
+    ports:
+      - "5858:5858"
+    volumes:
+      - .:/app

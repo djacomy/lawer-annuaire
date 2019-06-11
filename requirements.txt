@@ -1,0 +1,7 @@
+flask
+flask-restful
+flask-script
+flask_restful_swagger
+requests
+lxml
+tinydb
