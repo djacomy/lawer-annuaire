@@ -12,6 +12,7 @@ services:
     environment:
       DATA_DIR: $DATA_DIR
       CELERY_RESULT_BACKEND: redis://redis:6379
+      CELERY_BROKER_URL: redis://redis:6379
     ports:
       - "5001:5000"
     volumes:
@@ -22,10 +23,11 @@ services:
       - redis
   worker:
     container_name: juripredis_annuaire_worker
-    command: python -m manage celery --loglevel=info
+    command: python -m manage celery --loglevel=debug
     environment:
       DATA_DIR: $DATA_DIR
       CELERY_RESULT_BACKEND: redis://redis:6379
+      CELERY_BROKER_URL: redis://redis:6379
     build:
       context: .
       dockerfile: docker/annuaire/Dockerfile

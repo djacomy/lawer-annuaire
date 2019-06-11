@@ -8,7 +8,7 @@ result_serializer = 'json'
 accept_content = ['json']
 
 task_eager_propagates = True
-task_ignore_result = True
+task_ignore_result = False
 
 timezone = 'UTC'
 enable_utc = True

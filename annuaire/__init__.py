@@ -36,10 +36,14 @@ def create_app():
     from .tasks import celery, add
     celery.conf.update(app.config)
 
-    class ContextTask(celery.Task):
+    TaskBase = celery.create_task_cls()
+
+    class ContextTask(TaskBase):
+        abstract = True
+
         def __call__(self, *args, **kwargs):
             with app.app_context():
-                return self.run(*args, **kwargs)
+                return TaskBase.__call__(self, *args, **kwargs)
 
     celery.Task = ContextTask
 
