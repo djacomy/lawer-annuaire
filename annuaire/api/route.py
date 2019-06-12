@@ -1,50 +1,52 @@
+"""Module which defined routes of the api."""
 import logging
 
-from flask_restful import Resource, abort
-from flask_restful_swagger import swagger
-
+from annuaire.annuaire.database import get_references
 from annuaire.api import api_manager
 from annuaire.api.serializer import ReferencesList
-from annuaire.annuaire.database import get_references, export_lawyers
+
+
+from flask_restful import Resource, abort
+
+from flask_restful_swagger import swagger
 
 logger = logging.getLogger(__name__)
 
 
 class Reference(Resource):
-    """
-    Give data by reference
-    """
+    """Give data by reference."""
 
     @swagger.operation(
-        notes='Get data by reference',
+        notes="Get data by reference",
         responseClass=ReferencesList,
-        nickname='search',
+        nickname="search",
         parameters=[
             {
                 "name": "reference",
                 "description": "Name of reference: barreau, mentions, langues",
                 "required": True,
                 "allowMultiple": False,
-                "dataType": 'string',
+                "dataType": "string",
                 "paramType": "path"
             }
         ],
         responseMessages=[
             {
                 "code": 200,
-                "message": 'Success !'
+                "message": "Success !"
             },
             {
                 "code": 400,
-                "message": 'Error !!'
+                "message": "Error !!"
             }
         ]
     )
     def get(self, reference):
-
-        if reference not in ['barreau', 'mentions', 'langues']:
+        """GET method."""
+        if reference not in ["barreau", "mentions", "langues"]:
             abort(400, message="{0} unknown".format(reference))
 
-        return {'items': get_references(reference)}, 200
+        return {"items": get_references(reference)}, 200
 
-api_manager.add_resource(Reference, '/ref/<string:reference>/')
+
+api_manager.add_resource(Reference, "/ref/<string:reference>/")
