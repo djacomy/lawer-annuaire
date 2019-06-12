@@ -1,0 +1,221 @@
+<html>
+<head>
+<!-- Feuille de style associ&#233;e &#224; l'application eAnnuaire --> 
+<link href="CSS/feuille_style.css" rel="stylesheet" type="text/css" media="screen">
+
+<style type="text/css">
+  	html { height: 100% }
+   	body { height: 100%; padding: 0 }
+   	#map_canvas { width: 410px; height: 410px;}
+</style>
+
+
+<title>Annuaire des avocats</title>
+
+
+<script type="text/javascript" src="js/iframeResizer.contentWindow.min.js"></script>
+
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCdYCKb_5R5mQl70HAzYPyNX_Jge4YKkds&amp;sensor=false">
+</script>
+<script type="text/javascript">
+//Fonction qui affiche la Google Map avec le bon couple lat/long
+function initialize()
+{
+	var myOptions = {
+    	center: new google.maps.LatLng(document.getElementById("lat").value, document.getElementById("lng").value),
+	    scaleControl: true,
+	    zoom: parseInt(document.getElementById("zoomGoogleMap").value,10),
+	   	mapTypeId: google.maps.MapTypeId.ROADMAP
+	};
+
+	var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+	 
+	//Ajout du marqueur sur l'adresse
+	var marker = new google.maps.Marker({
+	    position: new google.maps.LatLng(document.getElementById("lat").value, document.getElementById("lng").value),
+	    map: map
+	  });
+	
+	var description = '<p>' + document.getElementById("description").value + '</p>';
+	
+	var infowindow = new google.maps.InfoWindow({
+	    content: description
+	  });
+	  
+	google.maps.event.addListener(marker, 'click', function() {
+		infowindow.open(map, marker);
+	  });
+}
+</script>
+<script language="JavaScript">
+
+
+
+</script> 
+
+</head>
+<body>
+
+
+<table width="445">
+
+<!-- 	Ligne pour lien vers liste de r&#233;sultats -->
+	<tr>
+		<td align="right" colspan="2"><a href="/eAnnuaire/resultats?appelDetail=true">Retour vers les r&#233;sultats<br><br></a></td>
+	</tr>
+	
+<!-- 	Ligne pour l'affichage du nom et pr&#233;nom -->
+	<tr>
+		<td>
+			<table width="100%" cellspacing="8" class="shadow-details-2">
+				<tr>
+					<td colspan="2">
+						<table width="370" border="0" cellspacing="0" cellpadding="0">
+							<tr>
+								<td>
+			
+			GOUZES
+			 
+			GERARD
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+	
+<!-- 	Ligne pour l'affichage du barreau -->
+				<tr>
+					<td colspan="2">
+			
+			Avocat au Barreau de : AGEN
+					</td>
+				</tr>
+	
+<!-- 	Ligne pour l'affichage de la date de prestation de serment -->
+	
+				<tr>
+					<td colspan="2">		
+			Date de prestation de serment : 
+			30
+			 / 11
+			 / 1971
+					</td>
+				</tr>
+	
+	
+<!-- 	Ligne pour l'affichage du titre "Coordonn&#233;es professionnelles" -->
+				<tr class="bold">
+					<td colspan="2" align="left" class="bold" style="border-bottom:1px #940027 solid;">Coordonn&#233;es professionnelles :</td>
+       			</tr>
+       			
+<!-- 	Lignes pour l'affichage de l'adresse -->
+	
+				<tr>
+					<td align="left" colspan="2">
+			SCPA GOUZES
+					</td>
+				</tr>
+	
+
+	
+				<tr>
+					<td align="left" colspan="2">
+			residence des neufs fontaines
+					</td>
+				</tr>
+	
+	
+	
+	
+	
+	
+	
+	
+				<tr>
+					<td align="left" colspan="2">
+			
+			47200
+			
+			 
+			MARMANDE
+					</td>
+				</tr>
+	
+<!-- 	Ligne pour l'affichage du n&#176; de tel -->
+				<tr>
+					<td width="183">
+			
+			T&#233;l&#233;phone : 
+					</td>
+					<td width="200" align="right">
+			0553209780
+					</td>
+				</tr>
+	
+<!-- 	Ligne pour l'affichage du n&#176; de fax -->
+				<tr>
+					<td>
+			
+			T&#233;l&#233;copie : 
+					</td>
+					<td align="right">
+			0553640778
+					</td>
+				</tr>
+	
+
+		
+<!-- 	Lignes pour l'affichage des mentions de sp&#233;cialisation d&#233;clar&#233;es par l'avocat -->	
+	
+<!-- 	Lignes pour l'affichage des langues d&#233;clar&#233;es par l'avocat -->			    			
+	
+				<tr class="bold">
+	        		<td align="left" colspan="2" style="border-bottom:1px #940027 solid;">Langue(s) : </td>
+	      		</tr>
+				<tr>
+					<td colspan="2" align="left">		
+			Fran&#231;ais
+					</td>
+				</tr>
+<!-- 	Lignes pour l'affichage des fonctions &#233;lectives reconnues par la loi du 31/12/1971 -->
+		
+	
+<!-- 	Ligne pour l'affichage des liens Adresser un message, Imprimer et T&#233;l&#233;charger la vCard -->
+	<tr>
+		<td align="left" colspan="2">
+			
+			<a href="/eAnnuaire/resultats?identifiantAvocat=0&amp;mail=true&amp;provenance=fiche">Adresser un message</a> | 
+
+			<a onclick="window.print()" href="/eAnnuaire/fiche?identifiantAvocat=0">Imprimer</a>
+	 
+			 | <a href="/eAnnuaire/fiche?identifiantAvocat=0&amp;vcard=true">T&#233;l&#233;charger la vCard</a>
+		</td>
+	</tr>
+			</table>
+			<br>
+			
+<!-- Affichage de la carte Google Map -->
+			<table width="100%" border="0" cellpadding="0" cellspacing="8" class="shadow-details">
+				<tr>
+					<td>
+
+<form name="formAdresse">
+	<input type="hidden" value="SCPA GOUZES&lt;br&gt;RESIDENCE DES NEUFS FONTAINES&lt;br&gt;47200 MARMANDE" name="description" id="description">
+	<input type="hidden" value="" name="lat" id="lat">
+	<input type="hidden" value="" name="lng" id="lng">
+	<input type="hidden" value="13" name="zoomGoogleMap" id="zoomGoogleMap">
+</form>
+ 			
+<div id="map_canvas"></div>
+<script type="text/javascript">
+	initialize();
+</script>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+</body>
+</html>

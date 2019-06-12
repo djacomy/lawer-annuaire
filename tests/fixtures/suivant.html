@@ -1,0 +1,495 @@
+<html>
+<head>
+<!-- Feuille de style associ&#233;e &#224; l'application eAnnuaire -->
+<link href="CSS/feuille_style.css" rel="stylesheet" type="text/css" media="screen">
+<link href="CSS/mail_Popup.css" rel="stylesheet" type="text/css" title="style1" media="screen">
+
+
+
+<script type="text/javascript" src="js/iframeResizer.contentWindow.min.js"></script>
+
+<title>Annuaire des avocats</title>
+
+
+
+<script language="JavaScript">
+	function ChangeUrlCode(formTriCode) {
+		if (formTriCode.filtreCodePostal.selectedIndex != 0) {
+			location.href = formTriCode.filtreCodePostal.options[formTriCode.filtreCodePostal.selectedIndex].value;
+		}
+	}
+	function ChangeUrlLangue(formTriLangue) {
+		if (formTriLangue.filtreLangue.selectedIndex != 0) {
+			location.href = formTriLangue.filtreLangue.options[formTriLangue.filtreLangue.selectedIndex].value;
+		}
+	}
+	function ChangeUrlMention(formTriSpec) {
+		if (formTriSpec.filtreSpec.selectedIndex != 0) {
+			location.href = formTriSpec.filtreSpec.options[formTriSpec.filtreSpec.selectedIndex].value;
+		}
+	}
+	//Verifie que l'email fourni en entr&#233;e est au bon format
+	function validationFormatEmail(email) {
+		//Si l'email n'est pas renseigne, format invalide
+		if (email == "") {
+			return false;
+		} else {
+			var new_string = new String(email);
+
+			//Supression des espaces en debut et en fin de l'email
+			new_string = new_string.replace(/^\s+/g, '').replace(/\s+$/g, '');
+
+			//Verification du format mail (avec un @ et un point)
+			if ((new_string.indexOf("@") >= 0)
+					&& (new_string.indexOf(".") >= 0)) //if (!isRFC822ValidEmail(new_string))
+			{
+				return true;
+			} else {
+				alert("Le format de l'email '" + new_string
+						+ "' n'est pas correct.");
+				return false;
+			}
+		}
+	}
+	//Validation Email RFC 822
+	function isRFC822ValidEmail(sEmail) {
+		var sQtext = '[^\\x0d\\x22\\x5c\\x80-\\xff]';
+		var sDtext = '[^\\x0d\\x5b-\\x5d\\x80-\\xff]';
+		var sAtom = '[^\\x00-\\x20\\x22\\x28\\x29\\x2c\\x2e\\x3a-\\x3c\\x3e\\x40\\x5b-\\x5d\\x7f-\\xff]+';
+		var sQuotedPair = '\\x5c[\\x00-\\x7f]';
+		var sDomainLiteral = '\\x5b(' + sDtext + '|' + sQuotedPair + ')*\\x5d';
+		var sQuotedString = '\\x22(' + sQtext + '|' + sQuotedPair + ')*\\x22';
+		var sDomain_ref = sAtom;
+		var sSubDomain = '(' + sDomain_ref + '|' + sDomainLiteral + ')';
+		var sWord = '(' + sAtom + '|' + sQuotedString + ')';
+
+		var sDomain = sSubDomain + '(\\x2e' + sSubDomain + ')*';
+		var sLocalPart = sWord + '(\\x2e' + sWord + ')*';
+		var sAddrSpec = sLocalPart + '\\x40' + sDomain;
+		var sValidEmail = '^' + sAddrSpec + '$';
+
+		var reValidEmail = new RegExp(sValidEmail);
+
+		if (reValidEmail.test(sEmail)) {
+			return true;
+		}
+
+		return false;
+	}
+
+
+
+
+
+
+</script>
+
+</head>
+<body>
+
+
+	<table width="445">
+
+		<!-- 	Ligne pour lien vers formulaire -->
+		<tr>
+			<td align="right"><a href="/eAnnuaire/formulaire?appelRetour=true">Nouvelle
+					recherche</a></td>
+		</tr>
+
+		<!-- 	Ligne pour le rappel des crit&#232;res de recherche -->
+		<tr>
+			<table width="100%">
+				<tr>
+					<td align="left"><u>Rappel des crit&#232;res de
+							recherches :</u></td>
+				</tr>
+
+
+
+
+
+
+				<tr>
+					<td align="left">Barreau : AGEN</td>
+				</tr>
+
+
+
+
+			</table>
+		</tr>
+
+		<!-- 	Ligne pour la zone de filtre -->
+
+		<tr>
+			<table width="445">
+				<tr>
+					<td colspan="3" align="center">
+						 <a href="/eAnnuaire/resultats?filtre=nom&amp;value=A">A</a>
+						 <a href="/eAnnuaire/resultats?filtre=nom&amp;value=B">B</a>
+						 <a href="/eAnnuaire/resultats?filtre=nom&amp;value=C">C</a>
+						 <a href="/eAnnuaire/resultats?filtre=nom&amp;value=D">D</a>
+						 E  <a href="/eAnnuaire/resultats?filtre=nom&amp;value=F">F</a>
+						 <a href="/eAnnuaire/resultats?filtre=nom&amp;value=G">G</a>
+						 <a href="/eAnnuaire/resultats?filtre=nom&amp;value=H">H</a>
+						 <a href="/eAnnuaire/resultats?filtre=nom&amp;value=I">I</a>
+						 <a href="/eAnnuaire/resultats?filtre=nom&amp;value=J">J</a>
+						 K  <a href="/eAnnuaire/resultats?filtre=nom&amp;value=L">L</a>
+						 <a href="/eAnnuaire/resultats?filtre=nom&amp;value=M">M</a>
+						 <a href="/eAnnuaire/resultats?filtre=nom&amp;value=N">N</a>
+						 <a href="/eAnnuaire/resultats?filtre=nom&amp;value=O">O</a>
+						 <a href="/eAnnuaire/resultats?filtre=nom&amp;value=P">P</a>
+						 Q  <a href="/eAnnuaire/resultats?filtre=nom&amp;value=R">R</a>
+						 <a href="/eAnnuaire/resultats?filtre=nom&amp;value=S">S</a>
+						 <a href="/eAnnuaire/resultats?filtre=nom&amp;value=T">T</a>
+						 U  <a href="/eAnnuaire/resultats?filtre=nom&amp;value=V">V</a>
+						 <a href="/eAnnuaire/resultats?filtre=nom&amp;value=W">W</a>
+						 X  <a href="/eAnnuaire/resultats?filtre=nom&amp;value=Y">Y</a>
+						 Z
+					</td>
+				</tr>
+				<tr>
+					<td rowspan="2" align="center" width="100px"><a href="/eAnnuaire/resultats?filtre=tous">Tous</a></td>
+					<form name="formTriCode">
+						<td align="center"><select name="filtreCodePostal" onchange="ChangeUrlCode(formTriCode)" style="width: 300px">
+								<option value="nonRenseigne">Code Postal</option>
+
+									<option value="/eAnnuaire/resultats?filtre=code&amp;value=47000">47000
+									</option>
+
+									<option value="/eAnnuaire/resultats?filtre=code&amp;value=47003">47003
+									</option>
+
+									<option value="/eAnnuaire/resultats?filtre=code&amp;value=47006">47006
+									</option>
+
+									<option value="/eAnnuaire/resultats?filtre=code&amp;value=47200">47200
+									</option>
+
+									<option value="/eAnnuaire/resultats?filtre=code&amp;value=47203">47203
+									</option>
+
+									<option value="/eAnnuaire/resultats?filtre=code&amp;value=47300">47300
+									</option>
+
+									<option value="/eAnnuaire/resultats?filtre=code&amp;value=47305">47305
+									</option>
+
+									<option value="/eAnnuaire/resultats?filtre=code&amp;value=47550">47550
+									</option>
+
+									<option value="/eAnnuaire/resultats?filtre=code&amp;value=47600">47600
+									</option>
+
+									<option value="/eAnnuaire/resultats?filtre=code&amp;value=47700">47700
+									</option>
+
+							</select>
+
+
+					<form name="formTriSpec">
+						<select name="filtreSpec" onchange="ChangeUrlMention(formTriSpec)" style="width: 300px">
+								<option value="nonRenseigne">Sp&#233;cialisations</option>
+
+									<option value="/eAnnuaire/resultats?filtre=mention&amp;value=20">Droit commercial, des affaires et de la concurrence
+									</option>
+
+									<option value="/eAnnuaire/resultats?filtre=mention&amp;value=">Droit de la famille, des personnes, et de leur patrimoine
+									</option>
+
+									<option value="/eAnnuaire/resultats?filtre=mention&amp;value=37">Droit de la s&#233;curit&#233; sociale et de la protection sociale
+									</option>
+
+									<option value="/eAnnuaire/resultats?filtre=mention&amp;value=28">Droit des garanties, des s&#251;ret&#233;s et des mesures d'ex&#233;cution
+									</option>
+
+									<option value="/eAnnuaire/resultats?filtre=mention&amp;value=38">Droit des soci&#233;t&#233;s
+									</option>
+
+									<option value="/eAnnuaire/resultats?filtre=mention&amp;value=41">Droit du travail
+									</option>
+
+									<option value="/eAnnuaire/resultats?filtre=mention&amp;value=27">Droit fiscal et droit douanier
+									</option>
+
+									<option value="/eAnnuaire/resultats?filtre=mention&amp;value=32">Droit p&#233;nal
+									</option>
+
+									<option value="/eAnnuaire/resultats?filtre=mention&amp;value=42">Proc&#233;dure d'appel
+									</option>
+
+							</select>
+						</form></td>
+					</form>
+				</tr>
+			</table>
+		</tr>
+
+
+		<!-- 	Ligne pour l'affichage de la liste des r&#233;sultats -->
+
+		<tr>
+
+			<br>
+			<table class="shadow-details-2" cellspacing="8" width="445" border="0">
+				<tr>
+					<td>
+						<table width="370" border="0" cellspacing="0" cellpadding="0">
+							<tr>
+								<td><a href="/eAnnuaire/fiche?identifiantAvocat=100">
+										TEISSIER  MAGALI
+								</a></td>
+
+
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td class="bold">
+						Barreau : AGEN
+					</td>
+				</tr>
+				<tr>
+					<td>
+						MAITRE MAGALI TEISSIER , 25 boulevard saint cyr   - 47300   VILLENEUVE SUR LOT
+					</td>
+				</tr>
+				<tr>
+					<td>
+						T&#233;l&#233;phone : 0553498080   - T&#233;l&#233;copie : 0553498081
+					</td>
+				</tr>
+				<tr>
+					<td><a href="/eAnnuaire/fiche?identifiantAvocat=100">D&#233;tail
+							et plan d'acc&#232;s</a>  | <a href="/eAnnuaire/resultats?identifiantAvocat=100&amp;mail=true&amp;provenance=liste">Adresser
+							un message</a>  | <a href="/eAnnuaire/resultats?identifiantAvocat=100&amp;vcard=true">T&#233;l&#233;charger
+							la vCard</a></td>
+				</tr>
+			</table>
+
+			<br>
+			<table class="shadow-details-2" cellspacing="8" width="445" border="0">
+				<tr>
+					<td>
+						<table width="370" border="0" cellspacing="0" cellpadding="0">
+							<tr>
+								<td><a href="/eAnnuaire/fiche?identifiantAvocat=101">
+										BELACEL  VIRGINIE
+								</a></td>
+
+
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td class="bold">
+						Barreau : AGEN
+					</td>
+				</tr>
+				<tr>
+					<td>
+						SELARL VALAY-BELACEL-DELBREL , 103 avenue jean jaures   - 47200   MARMANDE
+					</td>
+				</tr>
+				<tr>
+					<td>
+						T&#233;l&#233;phone : 0553649010   - T&#233;l&#233;copie : 0553647570
+					</td>
+				</tr>
+				<tr>
+					<td><a href="/eAnnuaire/fiche?identifiantAvocat=101">D&#233;tail
+							et plan d'acc&#232;s</a>  | <a href="/eAnnuaire/resultats?identifiantAvocat=101&amp;mail=true&amp;provenance=liste">Adresser
+							un message</a>  | <a href="/eAnnuaire/resultats?identifiantAvocat=101&amp;vcard=true">T&#233;l&#233;charger
+							la vCard</a></td>
+				</tr>
+			</table>
+
+			<br>
+			<table class="shadow-details-2" cellspacing="8" width="445" border="0">
+				<tr>
+					<td>
+						<table width="370" border="0" cellspacing="0" cellpadding="0">
+							<tr>
+								<td><a href="/eAnnuaire/fiche?identifiantAvocat=102">
+										BOUTITIE  LAURENCE
+								</a></td>
+
+
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td class="bold">
+						Barreau : AGEN
+					</td>
+				</tr>
+				<tr>
+					<td>
+						MAITRE LAURENCE BOUTITIE , 21 cours washington   - 47000   AGEN
+					</td>
+				</tr>
+				<tr>
+					<td>
+						T&#233;l&#233;phone : +33547428000   - T&#233;l&#233;copie :
+					</td>
+				</tr>
+				<tr>
+					<td><a href="/eAnnuaire/fiche?identifiantAvocat=102">D&#233;tail
+							et plan d'acc&#232;s</a>  | <a href="/eAnnuaire/resultats?identifiantAvocat=102&amp;mail=true&amp;provenance=liste">Adresser
+							un message</a>  | <a href="/eAnnuaire/resultats?identifiantAvocat=102&amp;vcard=true">T&#233;l&#233;charger
+							la vCard</a></td>
+				</tr>
+			</table>
+
+			<br>
+			<table class="shadow-details-2" cellspacing="8" width="445" border="0">
+				<tr>
+					<td>
+						<table width="370" border="0" cellspacing="0" cellpadding="0">
+							<tr>
+								<td><a href="/eAnnuaire/fiche?identifiantAvocat=103">
+										PIERRE  GWENAEL
+								</a></td>
+
+
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td class="bold">
+						Barreau : AGEN
+					</td>
+				</tr>
+				<tr>
+					<td>
+						MAITRE GWENAEL PIERRE , 5 place neuville   - 47200   MARMANDE
+					</td>
+				</tr>
+				<tr>
+					<td>
+						T&#233;l&#233;phone : 0553833513   - T&#233;l&#233;copie : 0553833513
+					</td>
+				</tr>
+				<tr>
+					<td><a href="/eAnnuaire/fiche?identifiantAvocat=103">D&#233;tail
+							et plan d'acc&#232;s</a>  | <a href="/eAnnuaire/resultats?identifiantAvocat=103&amp;mail=true&amp;provenance=liste">Adresser
+							un message</a>  | <a href="/eAnnuaire/resultats?identifiantAvocat=103&amp;vcard=true">T&#233;l&#233;charger
+							la vCard</a></td>
+				</tr>
+			</table>
+
+			<br>
+			<table class="shadow-details-2" cellspacing="8" width="445" border="0">
+				<tr>
+					<td>
+						<table width="370" border="0" cellspacing="0" cellpadding="0">
+							<tr>
+								<td><a href="/eAnnuaire/fiche?identifiantAvocat=104">
+										VASSEUR  SARAH
+								</a></td>
+
+
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td class="bold">
+						Barreau : AGEN
+					</td>
+				</tr>
+				<tr>
+					<td>
+						MAITRE SARAH VASSEUR , 21 cours washington   - 47000   AGEN
+					</td>
+				</tr>
+				<tr>
+					<td>
+						T&#233;l&#233;phone : +33553486185   - T&#233;l&#233;copie : +33553486187
+					</td>
+				</tr>
+				<tr>
+					<td><a href="/eAnnuaire/fiche?identifiantAvocat=104">D&#233;tail
+							et plan d'acc&#232;s</a>  | <a href="/eAnnuaire/resultats?identifiantAvocat=104&amp;vcard=true">T&#233;l&#233;charger
+							la vCard</a></td>
+				</tr>
+			</table>
+
+			<br>
+			<table class="shadow-details-2" cellspacing="8" width="445" border="0">
+				<tr>
+					<td>
+						<table width="370" border="0" cellspacing="0" cellpadding="0">
+							<tr>
+								<td><a href="/eAnnuaire/fiche?identifiantAvocat=105">
+										MOLINIE-MARGOT  MARIE-HELENE
+								</a></td>
+
+
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td class="bold">
+						Barreau : AGEN
+					</td>
+				</tr>
+				<tr>
+					<td>
+						MAITRE MARIE-HELENE MOLINIE-MARGOT , 1 rue clement ader   - 47200   MARMANDE
+					</td>
+				</tr>
+				<tr>
+					<td>
+						T&#233;l&#233;phone : 0553836832   - T&#233;l&#233;copie : 0553836833
+					</td>
+				</tr>
+				<tr>
+					<td><a href="/eAnnuaire/fiche?identifiantAvocat=105">D&#233;tail
+							et plan d'acc&#232;s</a>  | <a href="/eAnnuaire/resultats?identifiantAvocat=105&amp;mail=true&amp;provenance=liste">Adresser
+							un message</a>  | <a href="/eAnnuaire/resultats?identifiantAvocat=105&amp;vcard=true">T&#233;l&#233;charger
+							la vCard</a></td>
+				</tr>
+			</table>
+
+		</tr>
+
+
+		<!-- 	Ligne pour l'affichage des liens pr&#233;c&#233;dents et suivants (parcourir la liste de r&#233;sultats) -->
+
+		<tr>
+			<br>
+			<table width="445">
+				<tr>
+					<td align="center">
+						 <a href="/eAnnuaire/resultats?precedent=true">Pr&#233;c&#233;dent</a>
+						 | Suivant
+					</td>
+				</tr>
+			</table>
+		</tr>
+
+
+		<!-- 	Message pour indiquer le nombre de r&#233;sultats maximum -->
+		<tr>
+			<table width="445">
+				<tr>
+					<td align="left" class="mentions">Les r&#233;sultats de
+						cette recherche sont tri&#233;s al&#233;atoirement et sont
+						limit&#233;s &#224; 200 r&#233;ponses.</td>
+				</tr>
+			</table>
+		</tr>
+
+		<!-- 	Affichage du popup pour envoi de mail si demand&#233; -->
+
+
+	</table>
+
+</body>
+</html>

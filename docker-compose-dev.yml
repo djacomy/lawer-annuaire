@@ -3,12 +3,10 @@ services:
   redis:
     image: redis
   api:
-    #image: juripredis-crawler_crawler:latest
     container_name: juripredis_annuaire_api
-    command: python -m manage runserver  -h 0.0.0.0 -p 5000  -d
     build:
       context: .
-      dockerfile: docker/annuaire/Dockerfile
+      dockerfile: docker/test/Dockerfile
     environment:
       DATA_DIR: $DATA_DIR
       CELERY_RESULT_BACKEND: redis://redis:6379
@@ -17,10 +15,9 @@ services:
       - "5001:5000"
     volumes:
       - .:/app
-    depends_on:
-      - redis
     links:
       - redis
+      - worker
   worker:
     container_name: juripredis_annuaire_worker
     command: python -m manage celery --loglevel=debug

@@ -22,6 +22,7 @@ class ProductionConfig(Config):
 
 class TestingConfig(Config):
     TESTING = True
+    DATA_DIR = os.path.join(basedir, 'test', "data")
     CELERY_CONFIG = {'CELERY_ALWAYS_EAGER': True}
 
 

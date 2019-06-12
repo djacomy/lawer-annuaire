@@ -1,0 +1,507 @@
+
+<html>
+<head>
+<!-- Feuille de style associée à l'application eAnnuaire -->
+<link href="CSS/feuille_style.css" rel="stylesheet" type="text/css" media="screen">
+
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+<script type="text/javascript" src="js/iframeResizer.contentWindow.min.js"></script>
+
+<title>Annuaire des avocats</title>
+</head>
+
+<body>
+
+<font color="red"></font>
+
+<table width="445" cellspacing="8" class="shadow">
+
+<form name="formulaireRecherche" method="post" action="/eAnnuaire/resultats">
+<input type="hidden" name="form" value="formulaireRecherche" />
+
+	<tr>
+		<td>Nom d'un avocat : </td>
+		<td>&nbsp;</td>
+    </tr>
+    <tr>
+		<td colspan="2">
+
+			<input type="text" class="textinput" size="40" maxlength="255" name="nomAvocat">
+
+		</td>
+	</tr>
+	<tr>
+		<td>Prénom : </td>
+		<td>&nbsp;</td>
+    </tr>
+    <tr>
+		<td colspan="2">
+
+			<input type="text" class="textinput" size="40" maxlength="255" name="prenomAvocat">
+
+		</td>
+	</tr>
+	<tr>
+		<td>Barreau : </td>
+		<td>&nbsp;</td>
+    </tr>
+    <tr>
+		<td colspan="2">
+			<select name="barreau" style="width: 250">
+				<option VALUE="nonRenseigne" selected>Barreau :</option>
+				<option VALUE="0002">AGEN</option>
+				<option VALUE="0037">AIN</option>
+				<option VALUE="0003">AIX EN PROVENCE</option>
+				<option VALUE="0004">AJACCIO</option>
+				<option VALUE="0005">ALBERTVILLE</option>
+				<option VALUE="0006">ALBI</option>
+				<option VALUE="0007">ALENCON</option>
+				<option VALUE="0008">ALES</option>
+				<option VALUE="0067">ALPES DE HAUTE-PROVENCE</option>
+				<option VALUE="0009">AMIENS</option>
+				<option VALUE="0010">ANGERS</option>
+				<option VALUE="0012">ANNECY</option>
+				<option VALUE="0139">ARDECHE</option>
+				<option VALUE="0054">ARDENNES</option>
+				<option VALUE="0013">ARGENTAN</option>
+				<option VALUE="0077">ARIEGE</option>
+				<option VALUE="0014">ARRAS</option>
+				<option VALUE="0173">AUBE</option>
+				<option VALUE="0016">AURILLAC</option>
+				<option VALUE="0017">AUXERRE</option>
+				<option VALUE="0018">AVESNES-SUR-HELPE</option>
+				<option VALUE="0146">AVEYRON</option>
+				<option VALUE="0019">AVIGNON</option>
+				<option VALUE="0022">BASTIA</option>
+				<option VALUE="0023">BAYONNE</option>
+				<option VALUE="0024">BEAUVAIS</option>
+				<option VALUE="0025">BELFORT</option>
+				<option VALUE="0027">BERGERAC - SARLAT</option>
+				<option VALUE="0029">BESANCON</option>
+				<option VALUE="0030">BETHUNE</option>
+				<option VALUE="0031">BEZIERS</option>
+				<option VALUE="0032">BLOIS</option>
+				<option VALUE="0034">BONNEVILLE</option>
+				<option VALUE="0035">BORDEAUX</option>
+				<option VALUE="0036">BOULOGNE-SUR-MER</option>
+				<option VALUE="0038">BOURGES</option>
+				<option VALUE="0039">BOURGOIN-JALLIEU</option>
+				<option VALUE="0041">BREST</option>
+				<option VALUE="0042">BRIEY</option>
+				<option VALUE="0043">BRIVE</option>
+				<option VALUE="0044">CAEN</option>
+				<option VALUE="0046">CAMBRAI</option>
+				<option VALUE="0047">CARCASSONNE</option>
+				<option VALUE="0048">CARPENTRAS</option>
+				<option VALUE="0049">CASTRES</option>
+				<option VALUE="0051">CHALON-SUR-SAONE</option>
+				<option VALUE="0052">CHALONS en CHAMPAGNE</option>
+				<option VALUE="0053">CHAMBERY</option>
+				<option VALUE="0011">CHARENTE</option>
+				<option VALUE="0055">CHARTRES</option>
+				<option VALUE="0056">CHATEAUROUX</option>
+				<option VALUE="0058">CHERBOURG</option>
+				<option VALUE="0059">CLERMONT-FERRAND</option>
+				<option VALUE="0060">COLMAR</option>
+				<option VALUE="0061">COMPIEGNE</option>
+				<option VALUE="0062">COUTANCES</option>
+				<option VALUE="0083">CREUSE</option>
+				<option VALUE="0064">CUSSET-VICHY</option>
+				<option VALUE="0065">DAX</option>
+				<option VALUE="0127">DEUX SEVRES (NIORT)</option>
+				<option VALUE="0066">DIEPPE</option>
+				<option VALUE="0068">DIJON</option>
+				<option VALUE="0071">DOUAI</option>
+				<option VALUE="0072">DRAGUIGNAN</option>
+				<option VALUE="0073">DUNKERQUE</option>
+				<option VALUE="0074">EPINAL</option>
+				<option VALUE="0076">ESSONNE</option>
+				<option VALUE="0075">EURE (EVREUX)</option>
+				<option VALUE="0078">FONTAINEBLEAU</option>
+				<option VALUE="0015">GERS</option>
+				<option VALUE="0081">GRASSE</option>
+				<option VALUE="0082">GRENOBLE</option>
+				<option VALUE="0136">GUADELOUPE, SAINT-MARTIN ET SAINT-BARTHELEMY</option>
+				<option VALUE="0050">GUYANE</option>
+				<option VALUE="0092">HAUTE-LOIRE</option>
+				<option VALUE="0057">HAUTE-MARNE</option>
+				<option VALUE="0179">HAUTE-SAONE (VESOUL)</option>
+				<option VALUE="0080">HAUTES-ALPES</option>
+				<option VALUE="0121">HAUTS-DE-SEINE</option>
+				<option VALUE="0098">JURA (LONS-LE-SAUNIER)</option>
+				<option VALUE="0086">LA ROCHE-SUR-YON</option>
+				<option VALUE="0087">LA ROCHELLE - ROCHEFORT</option>
+				<option VALUE="0088">LAON</option>
+				<option VALUE="0089">LAVAL</option>
+				<option VALUE="0090">LE HAVRE</option>
+				<option VALUE="0091">LE MANS</option>
+				<option VALUE="0093">LES SABLES D'OLONNE</option>
+				<option VALUE="0094">LIBOURNE</option>
+				<option VALUE="0095">LILLE</option>
+				<option VALUE="0096">LIMOGES</option>
+				<option VALUE="0097">LISIEUX</option>
+				<option VALUE="0099">LORIENT</option>
+				<option VALUE="0045">LOT</option>
+				<option VALUE="0107">LOZERE (MENDE)</option>
+				<option VALUE="0101">LYON</option>
+				<option VALUE="0102">MACON/CHAROLLES</option>
+				<option VALUE="0104">MARSEILLE</option>
+				<option VALUE="0079">MARTINIQUE</option>
+				<option VALUE="0182">MAYOTTE</option>
+				<option VALUE="0105">MEAUX</option>
+				<option VALUE="0106">MELUN</option>
+				<option VALUE="0108">METZ</option>
+				<option VALUE="0021">MEUSE</option>
+				<option VALUE="0110">MONT DE MARSAN</option>
+				<option VALUE="0111">MONTARGIS</option>
+				<option VALUE="0113">MONTBELIARD</option>
+				<option VALUE="0115">MONTLUCON</option>
+				<option VALUE="0116">MONTPELLIER</option>
+				<option VALUE="0118">MOULINS</option>
+				<option VALUE="0119">MULHOUSE</option>
+				<option VALUE="0120">NANCY</option>
+				<option VALUE="0122">NANTES</option>
+				<option VALUE="0123">NARBONNE</option>
+				<option VALUE="0124">NEVERS</option>
+				<option VALUE="0125">NICE</option>
+				<option VALUE="0126">NIMES</option>
+				<option VALUE="0128">NOUMEA</option>
+				<option VALUE="0129">ORLEANS</option>
+				<option VALUE="0130">PAPEETE</option>
+				<option VALUE="0131">PARIS</option>
+				<option VALUE="0132">PAU</option>
+				<option VALUE="0166">PAYS D'ARLES (TARASCON)</option>
+				<option VALUE="0133">PERIGUEUX</option>
+				<option VALUE="0137">POITIERS</option>
+				<option VALUE="0135">PYRENEES ORIENTALES</option>
+				<option VALUE="0140">QUIMPER</option>
+				<option VALUE="0141">REIMS</option>
+				<option VALUE="0142">RENNES</option>
+				<option VALUE="0144">ROANNE</option>
+				<option VALUE="0147">ROUEN</option>
+				<option VALUE="0156">SAINT PIERRE LA REUNION</option>
+				<option VALUE="0148">SAINT-BRIEUC</option>
+				<option VALUE="0149">SAINT-DENIS LA REUNION</option>
+				<option VALUE="0151">SAINT-ETIENNE</option>
+				<option VALUE="0152">SAINT-GAUDENS</option>
+				<option VALUE="0153">SAINT-MALO - DINAN</option>
+				<option VALUE="0154">SAINT-NAZAIRE</option>
+				<option VALUE="0155">SAINT-OMER</option>
+				<option VALUE="0157">SAINT-QUENTIN</option>
+				<option VALUE="0158">SAINTES</option>
+				<option VALUE="0159">SARREGUEMINES</option>
+				<option VALUE="0160">SAUMUR</option>
+				<option VALUE="0161">SAVERNE</option>
+				<option VALUE="0033">SEINE-SAINT-DENIS</option>
+				<option VALUE="0162">SENLIS</option>
+				<option VALUE="0163">SENS</option>
+				<option VALUE="0164">SOISSONS</option>
+				<option VALUE="0165">STRASBOURG</option>
+				<option VALUE="0167">TARBES</option>
+				<option VALUE="0112">TARN ET GARONNE</option>
+				<option VALUE="0168">THIONVILLE</option>
+				<option VALUE="0169">THONON-LES-BAINS</option>
+				<option VALUE="0170">TOULON</option>
+				<option VALUE="0171">TOULOUSE</option>
+				<option VALUE="0172">TOURS</option>
+				<option VALUE="0174">TULLE</option>
+				<option VALUE="0063">VAL DE MARNE</option>
+				<option VALUE="0138">VAL D'OISE</option>
+				<option VALUE="0175">VALENCE</option>
+				<option VALUE="0176">VALENCIENNES</option>
+				<option VALUE="0177">VANNES</option>
+				<option VALUE="0178">VERSAILLES</option>
+				<option VALUE="0180">VIENNE</option>
+				<option VALUE="0181">VILLEFRANCHE-SUR-SAONE</option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td >Ville : </td>
+		<td>Code postal : </td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td colspan="2" >
+
+ 			<input type="text" size="40" style="width:275px;" class="textinput" name="ville">
+
+
+			<input type="text" class="textinput" style="width:100px;" size="40" height="20px" name="codePostal">
+
+		</td>
+	</tr>
+	<tr>
+		<td nowrap>Mentions de sp&eacute;cialisation : </td>
+		<td>&nbsp;</td>
+    </tr>
+    <tr>
+		<td colspan="2">
+			<select name="mentions" size="5" multiple="multiple" style="width: 395">
+				<option value="nonRenseigne">Mention :</option>
+				<option value="16">Droit de l'arbitrage</option>
+				<option value="17">Droit des associations et des fondations</option>
+				<option value="18">Droit des assurances</option>
+				<option value="19">Droit bancaire et boursier</option>
+				<option value="20">Droit commercial, des affaires et de la concurrence</option>
+				<option value="21">Droit du crédit et de la consommation</option>
+				<option value="22">Droit du dommage corporel</option>
+				<option value="23">Droit de l'environnement</option>
+				<option value="24">Droit des étrangers et de la nationalité</option>
+				<option value="25">Droit de la famille, des personnes, et de leur patrimoine</option>
+				<option value="26">Droit de la fiducie</option>
+				<option value="27">Droit fiscal et droit douanier</option>
+				<option value="28">Droit des garanties, des sûretés et des mesures d'exécution</option>
+				<option value="29">Droit immobilier</option>
+				<option value="30">Droit international et de l'Union européenne</option>
+				<option value="31">Droit des nouvelles technologies, de l'informatique et de la communication</option>
+				<option value="32">Droit pénal</option>
+				<option value="33">Droit de la propriété intellectuelle</option>
+				<option value="34">Droit public</option>
+				<option value="35">Droit rural</option>
+				<option value="36">Droit de la santé</option>
+				<option value="37">Droit de la sécurité sociale et de la protection sociale</option>
+				<option value="38">Droit des sociétés</option>
+				<option value="39">Droit du sport</option>
+				<option value="40">Droit des transports</option>
+				<option value="41">Droit du travail</option>
+				<option value="42">Procédure d'appel</option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td>Langues :  </td>
+		<td>&nbsp;</td>
+    </tr>
+    <tr>
+		<td colspan="2">
+			<select name="langues" size="5" multiple="multiple" style="width: 250">
+				<option value="nonRenseigne">Langue :</option>
+				<option value="ab">Abkhaze</option>
+				<option value="aa">Afar</option>
+				<option value="afg">Afghan</option>
+				<option value="af">Afrikaans</option>
+				<option value="ak">Akan</option>
+				<option value="sq">Albanais</option>
+				<option value="de">Allemand</option>
+				<option value="am">Amharique</option>
+				<option value="en">Anglais</option>
+				<option value="ar">Arabe</option>
+				<option value="an">Aragonais</option>
+				<option value="hy">Arménien</option>
+				<option value="as">Assamais</option>
+				<option value="av">Avar</option>
+				<option value="ae">Avestique</option>
+				<option value="ay">Aymara</option>
+				<option value="az">Azéri</option>
+				<option value="ba">Bachkir</option>
+				<option value="bm">Bambara</option>
+				<option value="eu">Basque</option>
+				<option value="bn">Bengalî</option>
+				<option value="ber">Berbère</option>
+				<option value="bi">Bichelamar</option>
+				<option value="be">Biélorusse</option>
+				<option value="bh">Bihari</option>
+				<option value="my">Birman</option>
+				<option value="bs">Bosnien</option>
+				<option value="br">Breton</option>
+				<option value="bg">Bulgare</option>
+				<option value="can">Cantonais</option>
+				<option value="ca">Catalan</option>
+				<option value="ch">Chamorro</option>
+				<option value="ny">Chichewa</option>
+				<option value="zh">Chinois</option>
+				<option value="si">Cingalais</option>
+				<option value="ko">Coréen</option>
+				<option value="kw">Cornique</option>
+				<option value="co">Corse</option>
+				<option value="ht">Créole haïtien</option>
+				<option value="cr">Cri</option>
+				<option value="hr">Croate</option>
+				<option value="da">Danois</option>
+				<option value="dv">Divehi</option>
+				<option value="dz">Dzongkha</option>
+				<option value="gd">Écossais</option>
+				<option value="es">Espagnol</option>
+				<option value="eo">Espéranto</option>
+				<option value="et">Estonien</option>
+				<option value="ee">Ewe</option>
+				<option value="fo">Féringien</option>
+				<option value="fj">Fidjien</option>
+				<option value="fi">Finnois</option>
+				<option value="fr">Français</option>
+				<option value="fy">Frison occidental</option>
+				<option value="gl">Galicien</option>
+				<option value="cy">Gallois</option>
+				<option value="lg">Ganda</option>
+				<option value="ka">Géorgien</option>
+				<option value="el">Grec</option>
+				<option value="gn">Guarani</option>
+				<option value="gu">Gujarâtî</option>
+				<option value="ha">Haoussa</option>
+				<option value="he">Hébreu</option>
+				<option value="hz">Herero</option>
+				<option value="hi">Hindî</option>
+				<option value="ho">Hiri motu</option>
+				<option value="hu">Hongrois</option>
+				<option value="io">Ido</option>
+				<option value="ig">Igbo</option>
+				<option value="id">Indonésien</option>
+				<option value="ia">Interlingua</option>
+				<option value="ie">Interlingue</option>
+				<option value="iu">Inuktitut</option>
+				<option value="ik">Inupiaq</option>
+				<option value="ipu">Ipunu</option>
+				<option value="ga">Irlandais</option>
+				<option value="is">Islandais</option>
+				<option value="it">Italien</option>
+				<option value="ja">Japonais</option>
+				<option value="jv">Javanais</option>
+				<option value="kab">Kabyle</option>
+				<option value="kl">Kalaallisut</option>
+				<option value="kn">Kannara</option>
+				<option value="kr">Kanouri</option>
+				<option value="ks">Kashmiri</option>
+				<option value="kk">Kazakh</option>
+				<option value="km">Khmer central</option>
+				<option value="kg">Kikongo</option>
+				<option value="ki">Kikuyu</option>
+				<option value="rw">Kinyarwanda</option>
+				<option value="ky">Kirghiz</option>
+				<option value="kir">Kirundi</option>
+				<option value="kv">Komi</option>
+				<option value="kj">Kuanyama</option>
+				<option value="ku">Kurde</option>
+			    <option value="lsf">Langue des signes (LSF)</option>
+				<option value="lo">Lao</option>
+				<option value="la">Latin</option>
+				<option value="lv">Letton</option>
+				<option value="li">Limbourgeois</option>
+				<option value="ln">Lingala</option>
+				<option value="lt">Lituanien</option>
+				<option value="lb">Luxembourgeois</option>
+				<option value="mk">Macédonien</option>
+				<option value="ms">Malais</option>
+				<option value="ml">Malayalam</option>
+				<option value="mg">Malgache</option>
+				<option value="mt">Maltais</option>
+				<option value="man">Mandarin</option>
+				<option value="gv">Mannois</option>
+				<option value="mi">Maori</option>
+				<option value="mr">Marâthî</option>
+				<option value="mh">Marshallais</option>
+				<option value="mo">Moldave</option>
+				<option value="mn">Mongol</option>
+				<option value="na">Nauruan</option>
+				<option value="nv">Navajo</option>
+				<option value="nd">Ndébélé du Nord</option>
+				<option value="nr">Ndébélé du Sud</option>
+				<option value="ng">Ndonga</option>
+				<option value="nl">Néerlandais</option>
+				<option value="ne">Népalais</option>
+				<option value="no">Norvégien</option>
+				<option value="nb">Norvégien bokmal</option>
+				<option value="nn">Norvégien nynorsk</option>
+				<option value="oc">Occitan</option>
+				<option value="oj">Ojibwé</option>
+				<option value="or">Oriya</option>
+				<option value="om">Oromo</option>
+				<option value="os">Ossète</option>
+				<option value="ug">Ouïghour</option>
+				<option value="ur">Ourdou</option>
+				<option value="uz">Ouzbek</option>
+				<option value="ps">Pachto</option>
+				<option value="pak">Pakistanais</option>
+				<option value="pi">Pâli</option>
+				<option value="pa">Panjâbî</option>
+				<option value="fa">Persan</option>
+				<option value="ff">Peul</option>
+				<option value="pl">Polonais</option>
+				<option value="pt">Portugais</option>
+				<option value="qu">Quechua</option>
+				<option value="rm">Romanche</option>
+				<option value="ro">Roumain</option>
+				<option value="ru">Russe</option>
+				<option value="se">Sami du Nord</option>
+				<option value="sm">Samoan</option>
+				<option value="sg">Sango</option>
+				<option value="sa">Sanskrit</option>
+				<option value="sc">Sarde</option>
+				<option value="sr">Serbe</option>
+				<option value="sh">Serbo-croate</option>
+				<option value="sn">Shona</option>
+				<option value="sd">Sindhi</option>
+				<option value="ss">Siswati</option>
+				<option value="sk">Slovaque</option>
+				<option value="sl">Slovène</option>
+				<option value="so">Somali</option>
+				<option value="st">Sotho du Sud</option>
+				<option value="sv">Suédois</option>
+				<option value="su">Sundanais</option>
+				<option value="sw">Swahili</option>
+				<option value="tg">Tadjik</option>
+				<option value="tl">Tagalog</option>
+				<option value="ty">Tahitien</option>
+				<option value="ta">Tamoul</option>
+				<option value="tt">Tatar</option>
+				<option value="cs">Tchèque</option>
+				<option value="ce">Tchétchène</option>
+				<option value="lu">Tchiluba</option>
+				<option value="cv">Tchouvache</option>
+				<option value="te">Télougou</option>
+				<option value="th">Thaï</option>
+				<option value="bo">Tibétain</option>
+				<option value="ti">Tigrinya</option>
+				<option value="to">Tongien</option>
+				<option value="ts">Tsonga</option>
+				<option value="tn">Tswana</option>
+				<option value="tr">Turc</option>
+				<option value="tk">Turkmène</option>
+				<option value="tw">Twi</option>
+				<option value="uk">Ukrainien</option>
+				<option value="ve">Venda</option>
+				<option value="vi">Vietnamien</option>
+				<option value="cu">Vieux slave</option>
+				<option value="vo">Volapük</option>
+				<option value="wa">Wallon</option>
+				<option value="wo">Wolof</option>
+				<option value="xh">Xhosa</option>
+				<option value="ii">Yi de Sichuan</option>
+				<option value="yi">Yiddish</option>
+				<option value="yo">Yoruba</option>
+				<option value="za">Zhuang</option>
+				<option value="zu">Zoulou</option>
+			</select>
+		</td>
+	</tr>
+
+<!--**********************************************************************************************************************-->
+	<!-- Champs cachés en attendant la prise en compte des fonctions electives
+	<tr>
+		<td>Fonctions &eacute;lectives : </td>
+		<td>
+			<input type="checkbox" name="fonctions" value="batonnier"> B&acirc;tonnier en exercice
+		</td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td nowrap>
+			<input type="checkbox" name="fonctions" value="membreConseilOrdre"> Membre du Conseil de l'Ordre
+		</td>
+	</tr>-->
+<!--**********************************************************************************************************************-->
+	<tr>
+		<td align="right" colspan="2">
+			<input class="bouton" type="submit" value="Rechercher">
+		</td>
+	</tr>
+<!-- 	Message pour indiquer le nombre de résultats maximum -->
+	<tr>
+		<td colspan="2" class="mentions">Les r&eacute;sultats de votre recherche seront tri&eacute;s al&eacute;atoirement et limit&eacute;s &agrave; 200 r&eacute;ponses.</td>
+	</tr>
+
+</form>
+</table>
+</body>
+</html>
