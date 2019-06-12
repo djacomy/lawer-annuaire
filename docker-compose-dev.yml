@@ -28,6 +28,8 @@ services:
     build:
       context: .
       dockerfile: docker/annuaire/Dockerfile
+    volumes:
+      - .:/app
     depends_on:
       - redis
     links:
