@@ -7,7 +7,7 @@ from tinydb import Query, TinyDB
 
 logger = logging.getLogger(__name__)
 
-DB = TinyDB(settings.DB_PATH)
+DB = TinyDB(settings.DB_PATH, create_dirs=True)
 
 
 def get_references(ref):
