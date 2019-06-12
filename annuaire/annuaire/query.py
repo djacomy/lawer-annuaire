@@ -1,4 +1,5 @@
 """Query module."""
+import logging
 import os
 
 from annuaire.annuaire.exception import AnnuaireException
@@ -11,6 +12,8 @@ from lxml import html
 import requests
 
 base_url = settings.BASE_URL
+
+log = logging.getLogger(__name__)
 
 
 def get_form_page():
@@ -92,7 +95,7 @@ def _analyse_result(res, cookies, output=None):
             res = parse_detail(tmp)
             item.update(res)
         except AnnuaireException as e:
-            print("ERR: {0}".format(e.message))
+            log.warning("ERR: {0}".format(e.message))
     return new_items
 
 

@@ -1,21 +1,18 @@
 """Command module to import lawyers in database."""
-import json
-import os
-from datetime import datetime
+import logging
 
-from annuaire.annuaire import get_form_page, search
-from annuaire.annuaire.database import get_all_barreaux, populate_lawyers
-from annuaire.annuaire.exception import AnnuaireException
-
-from config import settings
+from annuaire.annuaire.database import get_all_barreaux
+from annuaire.tasks.add import scrap_one_barreau
 
 from flask_script import Command, Option
+
+log = logging.getLogger(__name__)
 
 
 class ImportCommand(Command):
     """Class ImportCommand."""
 
-    description = "Upload reference command"
+    description = "Import lawyers"
 
     option_list = (
         Option("--barreau-code",
@@ -38,17 +35,6 @@ class ImportCommand(Command):
         else:
             codes = sorted(barreaux.keys())
 
-        result = get_form_page()
-        statistitics = {}
         for code in codes:
-            print(code, barreaux.get(code))
-            try:
-                items = search(code, result["cookies"])
-                statistitics[code] = len(items)
-                populate_lawyers(items)
-            except AnnuaireException:
-                statistitics[code] = None
-
-        with open(os.path.join(settings.DATA_DIR,
-                               "stats_{0}.json".format(datetime.now().strftime("%Y%m%d%H%i%s"))), "w") as fp:
-            json.dump(statistitics, fp)
+            log.info(f"{code}: {barreaux.get(code)}")
+            scrap_one_barreau.delay(code)

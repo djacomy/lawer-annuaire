@@ -43,7 +43,7 @@ def create_app():
     app.config.from_object(settings)
     register_logging(app)
 
-    from .tasks import celery, add
+    from .tasks import celery
     celery.conf.update(app.config)
 
     TaskBase = celery.create_task_cls()

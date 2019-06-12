@@ -75,7 +75,7 @@ manager.add_command("import", annuaire.commands.import_lawyers.ImportCommand())
 
 if __name__ == "__main__":
 
-    if sys.argv[1] == "test":
+    if len(sys.argv) > 0 and sys.argv[1] == "test":
         # small hack, to ensure that Flask-Script uses the testing
         # configuration if we are going to run the tests
         os.environ["ENV"] = "testing"
